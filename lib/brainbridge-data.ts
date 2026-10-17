@@ -1149,7 +1149,11 @@ export function getTestimonials(): Testimonial[] {
   if (typeof window === 'undefined') return DEFAULT_TESTIMONIALS;
   try {
     const saved = JSON.parse(localStorage.getItem('bb_testimonials') || 'null');
-    return saved || DEFAULT_TESTIMONIALS;
+    const list: Testimonial[] = Array.isArray(saved) && saved.length > 0 ? saved : DEFAULT_TESTIMONIALS;
+    return list.map((t) => ({
+      ...t,
+      quote: t.quote ? t.quote.replace(/BrainBridge/gi, 'G5MODE') : t.quote,
+    }));
   } catch {
     return DEFAULT_TESTIMONIALS;
   }
