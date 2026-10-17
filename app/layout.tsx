@@ -1,0 +1,66 @@
+import type { Metadata } from 'next';
+import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono, Caveat } from 'next/font/google';
+import './globals.css';
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-handwriting',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'G5MODE — Learn What Moves You Forward',
+  description:
+    'Personalized learning for a brighter future. Get access to expert-led courses, interactive lessons, and the right support to achieve your goals.',
+  openGraph: {
+    title: 'G5MODE — Learn What Moves You Forward',
+    description:
+      'Personalized learning for a brighter future. Get access to expert-led courses, interactive lessons, and the right support to achieve your goals.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'G5MODE — Learn What Moves You Forward',
+    description:
+      'Personalized learning for a brighter future. Get access to expert-led courses, interactive lessons, and the right support to achieve your goals.',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${caveat.variable} scroll-smooth`}
+    >
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-cream text-ink-soft antialiased selection:bg-amber/20 selection:text-navy"
+      >
+        {children}
+      </body>
+    </html>
+  );
+}
+
